@@ -1,7 +1,7 @@
 # MysteriousCode
-<br> My full name: Thanatthuch Kamseng</br>
-ContractMe**
-Line: thanatthuch38
-Email: thanatthuchkamseng@gmail.com
-Tell: 085-115-4196
-Current Role: Machine Learning Engineer
+<br>My full name: Thanatthuch Kamseng</br>
+<br> #ContractMe</br>
+<br>Line: thanatthuch38</br>
+<br>Email: thanatthuchkamseng@gmail.com</br>
+<br>Tell: 085-115-4196</br>
+<br>Current Role: Machine Learning Engineer</br>
