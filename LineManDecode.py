@@ -9,7 +9,7 @@ def LineManDecoder(CODE: str)-> str:
     # Reform Byte form to STR form
     STRform = DecB64.decode("utf-8") # The result of STRform is >> 'iangnoW:NAM:ENIL:ta:su:nioJ'
     
-    # Reverse text
+    # Reverse text and Replace ":" by a space
     Result = STRform[::-1].replace(":"," ")
 
     print(
