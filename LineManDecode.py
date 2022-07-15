@@ -15,7 +15,7 @@ class B64Decoder:
         textcount = text.count("=")
         text = text.replace("=", "A")
 
-        # Declare Empty string to prepare character insert
+        # Declare Empty string to prepare character6bit insert
         boxstring = ""
         for char in text:
             boxstring += "{:0>6b}".format(self.CHARACTERS.index(char))
@@ -26,6 +26,7 @@ class B64Decoder:
         # Transformation B8 to Byte text and insert it. 
         bytesText = b""
         for B8 in B8bytes:
+            #Decode Ascii to Base64 index and Decode it
             bytesText += bytes([int(B8, 2)])
 
         # the result of bytesText is:  b'iangnoW:NAM:ENIL:ta:su:nioJ'
