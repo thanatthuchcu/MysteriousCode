@@ -1,26 +1,48 @@
-import base64
+# by Thanatthuch Kamseng
+
+class B64Decoder:
+    CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+
+    def B8(self, text, length):
+        Bit8Array = []
+
+        for i in range(0, len(text), length):
+            Bit8Array.append(text[i:i+length])
+        return Bit8Array
+
+    def decode(self, text):
+        # Count length of text if in text is '=' for replace by A
+        textcount = text.count("=")
+        text = text.replace("=", "A")
+
+        # Declare Empty string to prepare character insert
+        boxstring = ""
+        for char in text:
+            boxstring += "{:0>6b}".format(self.CHARACTERS.index(char))
+        
+        # Transformation B64 to B8
+        B8bytes = self.B8(boxstring, 8)
+        
+        # Transformation B8 to Byte text and insert it. 
+        bytesText = b""
+        for B8 in B8bytes:
+            bytesText += bytes([int(B8, 2)])
+
+        # the result of bytesText is:  b'iangnoW:NAM:ENIL:ta:su:nioJ'
+        # Reverse text form byte-type to 'utf-8' and replace ":" by a space 
+        textResult = bytesText[::-1].decode('utf-8').replace(":", " ")
+
+        return textResult
 
 
-
-def LineManDecoder(CODE: str)-> str:
-    # Decode from Base64
-    DecB64 = base64.b64decode(CODE) # The result of DecB64 is >> b'iangnoW:NAM:ENIL:ta:su:nioJ' this is byte form<< 
-    
-    # Reform Byte form to STR form
-    STRform = DecB64.decode("utf-8") # The result of STRform is >> 'iangnoW:NAM:ENIL:ta:su:nioJ'
-    
-    # Reverse text and Replace ":" by a space
-    Result = STRform[::-1].replace(":"," ")
-
-    print(
-        f"The Result is : {Result}"
-    )
-    return Result;
 
 if __name__ == "__main__":
     print("================================= Start ====================================")
-    CODE = "aWFuZ25vVzpOQU06RU5JTDp0YTpzdTpuaW9K";
-    LineManDecoder(CODE);
 
-    print("\nThank for consider\nMy full name: Thanatthuch Kamseng\nRole: a Machine Learning Engineer\n*ContractMe*\nLine: thanatthuch38\nCall: 085-115-4196\nEmail: thanatthuchkamseng@gmail.com")
+    Secret = "aWFuZ25vVzpOQU06RU5JTDp0YTpzdTpuaW9K"
+
+    SecretDecoded = B64Decoder().decode(Secret)
+    print(f"\nThe result is : {SecretDecoded}")
+    
+    print("\nThank for consider\nMy full name: Thanatthuch Kamseng\nRole: Machine Learning Engineer\n*ContractMe*\nLine: thanatthuch38\nCall: 085-115-4196\nEmail: thanatthuchkamseng@gmail.com")
     print("================================= ENDL ====================================")
