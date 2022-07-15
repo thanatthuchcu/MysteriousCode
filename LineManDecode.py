@@ -10,7 +10,7 @@ def LineManDecoder(CODE: str)-> str:
     STRform = DecB64.decode("utf-8") # The result of STRform is >> 'iangnoW:NAM:ENIL:ta:su:nioJ'
     
     # Reverse text
-    Result = STRform[::-1]
+    Result = STRform[::-1].replace(":"," ")
 
     print(
         f"The Result is : {Result}"
