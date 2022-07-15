@@ -1,11 +1,11 @@
 class Decoder:
     def __init__(self):
-        BigCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        SmallCase = "abcdefghijklmnopqrstuvwxyz"
+        UpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        LowerCase = "abcdefghijklmnopqrstuvwxyz"
         NumericCase = "0123456789"
         OperationCase = "+/"
-        self.__B64idx = BigCase\
-            + SmallCase\
+        self.__B64idx = UpperCase\
+            + LowerCase\
             + NumericCase\
             + OperationCase
         
