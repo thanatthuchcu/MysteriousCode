@@ -22,5 +22,5 @@ if __name__ == "__main__":
     CODE = "aWFuZ25vVzpOQU06RU5JTDp0YTpzdTpuaW9K";
     LineManDecoder(CODE);
 
-    print("\nThank for consider\nMy full name: Thanatthuch Kamseng\nRole: Machine Learning Engineer\n*ContractMe*\nLine: thanatthuch38\nCall: 085-115-4196\nEmail: thanatthuchkamseng@gmail.com")
+    print("\nThank for consider\nMy full name: Thanatthuch Kamseng\nRole: a Machine Learning Engineer\n*ContractMe*\nLine: thanatthuch38\nCall: 085-115-4196\nEmail: thanatthuchkamseng@gmail.com")
     print("================================= ENDL ====================================")
