@@ -7,12 +7,12 @@ class B64Decoder:
         Bit8Array = []
 
         for i in range(0, len(text), length):
-            Bit8Array.append(text[i:i+length])
+            Bit8Array.append(text hi[i:i+length])
         return Bit8Array
 
     def decode(self, text):
         # Count length of text if in text is '=' for replace by A
-        textcount = text.count("=")
+       
         text = text.replace("=", "A")
 
         # Declare Empty string to prepare character6bit insert
