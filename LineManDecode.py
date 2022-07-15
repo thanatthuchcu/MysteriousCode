@@ -1,49 +1,50 @@
-# by Thanatthuch Kamseng
-
-class B64Decoder:
-    CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
-
-    def B8(self, text, length):
-        Bit8Array = []
-
-        for i in range(0, len(text), length):
-            Bit8Array.append(text hi[i:i+length])
-        return Bit8Array
-
-    def decode(self, text):
-        # if in text is '=' for replace by A
-       
-        text = text.replace("=", "A")
-
-        # Declare Empty string to prepare character6bit insert
-        boxstring = ""
-        for char in text:
-            boxstring += "{:0>6b}".format(self.CHARACTERS.index(char))
+class Decoder:
+    def __init__(self):
+        BigCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        SmallCase = "abcdefghijklmnopqrstuvwxyz"
+        NumericCase = "0123456789"
+        OperationCase = "+/"
+        self.__B64idx = BigCase\
+            + SmallCase\
+            + NumericCase\
+            + OperationCase
         
-        # Transformation B64 to B8
-        B8bytes = self.B8(boxstring, 8)
+    def __bits6(self, text: str)-> str:
+        Bits6 = ""
+        for ch in text:
+            Bits6+= "{:0>6b}".format(
+                self.__B64idx.index(ch)
+            )
+        return Bits6
+    
+    def __bits8(self, text: str)-> list:
+        Bits6:  str = self.__bits6(text)
+        Length: int = len(Bits6)
+        Start:  int = 0
+        Step:   int = 8
+        Bits8arr = []   
+        for i in range(Start, Length, Step):
+            Bits8arr.append(Bits6[i: i+Step])
+        return Bits8arr
+    
+    def decode(self, text: str)-> str:
+        Bits8arr = self.__bits8(text)
+        Texts = b""
+        for bit8 in self.__bits8(text):
+            asciiForm = [int(bit8,2)]
+            asciiDecode = bytes(asciiForm)
+            Texts += asciiDecode
+        return Texts
         
-        # Transformation B8 to Byte text and insert it. 
-        bytesText = b""
-        for B8 in B8bytes:
-            #Decode Ascii to Base64 index and Decode it
-            bytesText += bytes([int(B8, 2)])
-
-        # the result of bytesText is:  b'iangnoW:NAM:ENIL:ta:su:nioJ'
-        # Reverse text form byte-type to 'utf-8' and replace ":" by a space 
-        textResult = bytesText[::-1].decode('utf-8').replace(":", " ")
-
-        return textResult
-
-
-
 if __name__ == "__main__":
+
     print("================================= Start ====================================")
 
-    Secret = "aWFuZ25vVzpOQU06RU5JTDp0YTpzdTpuaW9K"
-
-    SecretDecoded = B64Decoder().decode(Secret)
-    print(f"\nThe result is : {SecretDecoded}")
+    Secret   = "aWFuZ25vVzpOQU06RU5JTDp0YTpzdTpuaW9K"
+    myDecode = Decoder().decode(Secret).decode("utf-8")
+    myResult = myDecode[::-1].replace(":"," ")
     
+    print("The Result is : ",myResult)
+
     print("\nThank for consider\nMy full name: Thanatthuch Kamseng\nRole: Machine Learning Engineer\n*ContractMe*\nLine: thanatthuch38\nCall: 085-115-4196\nEmail: thanatthuchkamseng@gmail.com")
     print("================================= ENDL ====================================")
