@@ -28,7 +28,6 @@ class Decoder:
         return Bits8arr
     
     def decode(self, text: str)-> str:
-        Bits8arr = self.__bits8(text)
         Texts = b""
         for bit8 in self.__bits8(text):
             asciiForm = [int(bit8,2)]
