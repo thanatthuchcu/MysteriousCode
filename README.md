@@ -4,4 +4,4 @@
 <br>Line: thanatthuch38</br>
 <br>Email: thanatthuchkamseng@gmail.com</br>
 <br>Tell: 085-115-4196</br>
-<br>Current Role: Machine Learning Engineer</br>
+<br>I currently work as a Machine Learning Engineer</br>
