@@ -11,7 +11,7 @@ class B64Decoder:
         return Bit8Array
 
     def decode(self, text):
-        # Count length of text if in text is '=' for replace by A
+        # if in text is '=' for replace by A
        
         text = text.replace("=", "A")
 
