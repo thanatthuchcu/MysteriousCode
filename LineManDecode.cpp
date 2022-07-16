@@ -193,5 +193,5 @@ int main(){
 
     cout <<"Contrack: \nLine: Thanatthuch38\nTel: 085-115-4196\nEmail: thanatthuchkamseng@gmail.com\nEmail2: thanatthuch.cu@gmail.com"<< endl;
     cout << "================================================ Thank =================================================" << endl;
-
+    return 0;
 }
